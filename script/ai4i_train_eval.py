@@ -62,7 +62,7 @@ except ImportError as e:
     ) from e
 
 
-DATA_PATH = "data/ai4i2020.csv"
+
 OUTPUT_DIR = "article"
 
 
@@ -72,7 +72,7 @@ def load_ai4i(path: str) -> pd.DataFrame:
     The function is robust to slight variations in column naming by matching
     on substrings instead of exact names.
     """  # noqa: D401
-    df = pd.read_csv(path)
+    df = pd.read_csv("ai4i2020.csv")
 
     # Normalize column names to lower for easier matching (keep original as backup)
     orig_cols = list(df.columns)
@@ -345,8 +345,8 @@ def plot_torque_toolwear_scatter(df: pd.DataFrame, out_path: str) -> None:
 
 
 def main() -> None:
-    print(f"Loading dataset from {DATA_PATH}...")
-    df = load_ai4i(DATA_PATH)
+    # print(f"Loading dataset from {DATA_PATH}...")
+    df = load_ai4i("ai4i2020.csv")
 
     make_output_dir(OUTPUT_DIR)
 
